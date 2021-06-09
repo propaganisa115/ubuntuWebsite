@@ -23,6 +23,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from app.models import Sekolah
 
+
 schema_view = get_schema_view(
    openapi.Info(
       title="main API",
