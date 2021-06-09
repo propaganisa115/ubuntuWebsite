@@ -34,6 +34,7 @@ admin.site.register(Provinsi, ProvinsiAdmin)
 class KabKotaAdmin(admin.ModelAdmin):
     list_display = ('kabkota_kode','kabkota_nama')
 
+
 admin.site.register(KabupatenKota, KabKotaAdmin)
 
 class KecamatanAdmin(admin.ModelAdmin):
