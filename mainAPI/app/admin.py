@@ -14,7 +14,7 @@ class SekolahResource(resources.ModelResource):
 
 
 class SekolahAdmin(ImportExportModelAdmin):
-    list_display = ('sekolah_domain','sekolah_bucket','sekolah_secretKey','status')
+    list_display = [f.name for f in Sekolah._meta.fields]
     resource_class = SekolahResource
 
 
@@ -23,7 +23,8 @@ admin.site.register(Sekolah, SekolahAdmin)
 #@admin.register(models.Sekolah)
 
 class Sekolah(admin.ModelAdmin):
-    list_display = ('sekolah_domain','sekolah_bucket','sekolah_secretKey','status')
+    #list_display = ('sekolah_domain','sekolah_bucket','sekolah_secretKey','status')
+    list_display = [f.name for f in Sekolah._meta.fields]
     readonly_fields = ('sekolah_secretKey',)
 
 class ProvinsiAdmin(admin.ModelAdmin):
