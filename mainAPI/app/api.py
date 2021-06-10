@@ -6,6 +6,7 @@ from .models import Sekolah, Provinsi, KabupatenKota, Kecamatan, Kelurahan
 from rest_framework.permissions import IsAuthenticated
 from .authentication import SekolahAuthentication
 from django.shortcuts import get_object_or_404
+from rest_framework import permissions
 
 
 class SekolahCreateApi(generics.CreateAPIView):
@@ -40,11 +41,13 @@ class SekolahDeleteApi(SekolahAuthentication, generics.DestroyAPIView):
 
 
 class ProvinsiAPI(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Provinsi.objects.all()
     serializer_class = ProvinsiSerializer
 
 
 class ProvinsiAPIdetails(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Provinsi.objects.all()
     serializer_class = ProvinsiSerializer
 
@@ -55,6 +58,7 @@ class ProvinsiAPIdetails(generics.RetrieveAPIView):
         return Response(serializer.data)
 
 class KabupatenKotaAPI(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     #queryset = KabupatenKota.objects.all()
     serializer_class = KabupatenKotaSerializer
 
@@ -62,6 +66,7 @@ class KabupatenKotaAPI(generics.ListAPIView):
         return KabupatenKota.objects.filter(provinsi__provinsi_kode= self.kwargs.get('provinsi_kode'))
 
 class KabupatenKotadetails(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = KabupatenKota.objects.all()
     serializer_class = KabupatenKotaSerializer
 
@@ -72,6 +77,7 @@ class KabupatenKotadetails(generics.RetrieveAPIView):
         return Response(serializer.data)
 
 class KecamatanAPI(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     #queryset = KabupatenKota.objects.all()
     serializer_class = KecamatanSerializer
 
@@ -79,6 +85,7 @@ class KecamatanAPI(generics.ListAPIView):
         return Kecamatan.objects.filter(KabupatenKota__kabkota_kode= self.kwargs.get('kabkota_kode'))
 
 class Kecamatandetails(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Kecamatan.objects.all()
     serializer_class = KecamatanSerializer
 
@@ -89,6 +96,7 @@ class Kecamatandetails(generics.RetrieveAPIView):
         return Response(serializer.data)
 
 class KelurahanAPI(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     #queryset = KabupatenKota.objects.all()
     serializer_class = KelurahanSerializer
 
@@ -96,6 +104,7 @@ class KelurahanAPI(generics.ListAPIView):
         return Kelurahan.objects.filter(Kecamatan__kecamatan_kode= self.kwargs.get('kecamatan_kode'))
 
 class Kelurahandetails(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Kelurahan.objects.all()
     serializer_class = KelurahanSerializer
 

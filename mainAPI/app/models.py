@@ -71,3 +71,8 @@ class Sekolah(models.Model):
 
 	class Meta:
 		verbose_name_plural = "Daftar Sekolah"
+
+class SekolahExtend(Sekolah):
+
+    class Meta:
+        proxy= True
