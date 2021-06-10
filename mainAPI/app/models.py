@@ -60,7 +60,7 @@ class Sekolah(models.Model):
 	sekolah_email=models.EmailField(max_length=100,blank=True,default=None)
 	sekolah_no_telepon=models.CharField(max_length=30,blank=True,default=None)
 	sekolah_no_handphone = models.CharField(max_length=30, blank=True,default=None)
-	sekolah_kelurahan =  models.ForeignKey(Kelurahan, on_delete=models.CASCADE)
+	sekolah_kelurahan =  models.ForeignKey(Kelurahan, on_delete=models.CASCADE, blank=True, null=True)
 	sekolah_alamat = models.CharField(max_length=400, blank=True, default=None)
 	sekolah_koordinator = models.CharField(max_length=100, blank=True, default=None)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES ,default='Client')
