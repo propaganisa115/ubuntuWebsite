@@ -19,37 +19,21 @@ class SekolahResource(resources.ModelResource):
 
 class SekolahAdmin(ImportExportModelAdmin):
     list_display = [f.name for f in Sekolah._meta.fields]
+    search_fields = ['sekolah_domain']
     resource_class = SekolahResource
 
-class sekolahProxy(Sekolah):
-    class Meta:
-        proxy = True
-        verbose_name_plural = "Import Data Sekolah"
+
+
+admin.site.register(Sekolah, SekolahAdmin)
 
 
 
-admin.site.register(sekolahProxy, SekolahAdmin)
-
-class SekolahSearchAdmin(AdvancedSearchAdmin, SekolahAdmin ):
-    list_display = [f.name for f in Sekolah._meta.fields]
-    resource_class = SekolahResource
-    search_form = SekolahSearch
-
-    def sekolah_domain(request, field_value, param_values):
-
-        query = Sekolah.objects.filter(sekolah_domain=field_value)
-        return query
-
-admin.site.register(Sekolah, SekolahSearchAdmin)
 
 
 
-#@admin.register(models.Sekolah)
 
-class Sekolah(admin.ModelAdmin):
-    #list_display = ('sekolah_domain','sekolah_bucket','sekolah_secretKey','status')
-    list_display = [f.name for f in Sekolah._meta.fields]
-    readonly_fields = ('sekolah_secretKey',)
+
+
 
 class ProvinsiAdmin(admin.ModelAdmin):
     list_display = ('provinsi_kode','provinsi_nama')
