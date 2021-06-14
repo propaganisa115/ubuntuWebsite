@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block branding %}
+{% block extrastyle %}
+  <link rel='stylesheet' href='{% static 'admin/css/admin.css' %}'>
+{% endblock %}
+<h1 = 'head'>
+<img src="{% static 'admin/img/logov3.png' %}" alt="  SeOn Indonesia:" class="brand_img" height="39" width="77">
+Aplikasi Sekolah Indonesia
+  </h1>
+{% endblock %}

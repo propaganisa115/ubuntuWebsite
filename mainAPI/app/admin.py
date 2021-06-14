@@ -8,7 +8,6 @@ from .forms import SekolahSearch
 from import_export.admin import ImportExportActionModelAdmin
 
 
-
 class SekolahResource(resources.ModelResource):
 
     class Meta:
@@ -23,16 +22,7 @@ class SekolahAdmin(ImportExportModelAdmin):
     resource_class = SekolahResource
 
 
-
 admin.site.register(Sekolah, SekolahAdmin)
-
-
-
-
-
-
-
-
 
 
 class ProvinsiAdmin(admin.ModelAdmin):
